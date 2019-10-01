@@ -31,5 +31,28 @@ video#bgvid {
 }
 .stopfade { opacity: .5; }
 
+h3{
+    color: #fafafa;
+}
 
+#trainTable{
+   color: #fafafa; 
+}
+
+h4{
+    color: #fafafa;
+
+}
+
+#trainNameInput {
+    color: #fafafa;
+}
+
+#destinationInput{
+     color: #fafafa;
+}
+
+#firstInput{
+    color: #fafafa;
+}
 
