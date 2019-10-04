@@ -5,104 +5,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assests/style.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-   
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
+    <link rel="stylesheet" href="assests/style.css">
 
 </head>
 
 <body>
 
-   <video playsinline autoplay muted loop id="bgvid">
-    <source src="https://www.videvo.net/videvo_files/converted/2014_05/videos/Sunset_From_a_Train.mov96112.mp4" type="video/mp4">
-</video>
+    <video playsinline autoplay muted loop id="bgvid">
+        <source src="https://www.videvo.net/videvo_files/converted/2014_05/videos/Sunset_From_a_Train.mov96112.mp4"
+            type="video/mp4">
+    </video>
 
-<button id="myBtn" onclick="myfunction()">pause</button>  
+    <!-- <button id="myBtn" onclick="myfunction()">pause</button>   -->
 
-<div class= "content">
-    <div class='container'>
-        <div class='row'>
-            <div class='card-panel teal darken-4'>
-                <h3 class='center-align'>Train Schedule</h3>
+
+    <div class="container">
+
+            
+                <h1 class="text-center">Train Time!!</h1>
+    
             </div>
-        </div>
-
-        <div class='row'>
-            <div class='card-panel teal darken-4 trainInfo'>
-                <h4 class='center-align'>Where They At?</h4>
-                <table class="table striped center bordered repsonsive-table" id='trainTable'>
-                    <thead>
-                        <tr>
-                            <th>Train Name</th>
-                            <th>Destination</th>
-                            <th>Frequency (Mins)</th>
-                            <th>Next Arrival</th>
-                            <th>Minutes Away</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
+            
+                <div class="card-header text-white bg-primary mb-3">Current Train</div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Train Name</th>
+                                <th>Destination</th>
+                                <th>frequency</th>
+                                <th>Next Arrival</th>
+                                <th>Minutues Away</th>
+                            </tr>
+                           
+                                
+                                
+                            
+                        </thead>
+                        <tbody id="full-table">
+                            <tr>
+                                <td scope="row" id="train-name"></td> 
+                                                            
+                                <td id="destionation"></td>
+                                <td id="frequency"></td>                               
+                                <td id="next-arrival"></td> 
+                               
+                                <td id="minutes-away"></td>
+                             
+                            </tr>
+    
+                        </tbody>
+                    </table>
+                </div>
+    
             </div>
-        </div>
-
-        <div class='row'>
-            <div class='card-panel teal darken-4'>
-                <h4 class='center-align'>Add Your Train</h4>
-                <form>
-                    <div class="input-field col s12">
-                        <input type="text" class="validate" id="trainNameInput">
-                        <lable for="">Tain Name</lable>
+    
+            <br>
+    
+            
+                <div class="card-header text-white bg-primary mb-3">Add Train</div>
+                <div class="card-body">
+                    <form method="POST" action="form-handler" onsubmit="return checkForm(this);">
+                        <div class="form-group">
+                            <label for="train-name">Train Name</label>
+                            <input class="form-control" id="trian-name" type="text" required>
+                            <div class="invalid-feedback" id="invalid-name"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="train-destination">Destination</label>
+                                <input class="form-control" id="trian-destination" type="text" required>
+                                <div class="invalid-feedback" id="invalid-destination"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="train-first-time">Frist Train Time</label>
+                                <input class="form-control" id="train-first-time" type="text" required>
+                                <div class="invalid-feedback" id="invalid-name"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="train-frequency">Frequency</label>
+                                <input class="form-control" id="trian-frquency" type="text" required>
+                                <div class="invalid-feedback" id="invalid-frequency"></div>
+                            </div>
+                            <button class="btn btn-primary" id="submit-button" type="submit">Submit</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="input-field col s12">
-                        <input type="text" class="validate" id="destinationInput">
-                        <lable for="">Destination</lable>
-                    </div>
-                    <div class="input-field col s12">
-                        <input type="text" class="validate" id="firstInput">
-                        <lable for="">First Train (HH:mm Military Time</lable>
-                    </div>
-                    <div class="input-field col s12">
-                        <input type="text" class="validate" id="frequencyInput">
-                        <lable for="">Frequency (Minutes)</lable>
-                    </div>
-                    <button type="submit" class="btn" id="addTrainBtn">Submit</button>
-
-                </form>
-            </div>
-        </div>
-
-    </div>
-
-</div>
+    
+                </div>
+    
+    
+    
+    
+    
+    
+    
+    
+                        
 
 
 
 
 
 
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-firestore.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-database.js"></script>
+
+    <scirpt src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></scirpt>
 
 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 
-
- <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
-
-
-
-
-    <script src='https://code.jquery.com/jquery.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" src="train.js"></script>
 </body>
 

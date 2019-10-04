@@ -29,30 +29,16 @@
 video#bgvid {
     transition: 1s opacity;
 }
-.stopfade { opacity: .5; }
+.stopfade { opacity: .5; } */
 
-h3{
+#lable{
     color: #fafafa;
 }
 
-#trainTable{
-   color: #fafafa; 
-}
-
-h4{
-    color: #fafafa;
+#container2{
+    background-color: transparent;
+   
 
 }
 
-#trainNameInput {
-    color: #fafafa;
-}
-
-#destinationInput{
-     color: #fafafa;
-}
-
-#firstInput{
-    color: #fafafa;
-}
 
